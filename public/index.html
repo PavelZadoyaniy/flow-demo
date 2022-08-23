@@ -1,23 +1,201 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tachyons/4.7.0/tachyons.css">
-		<title>Dreamforce 2018 is the best</title>
-	</head>
-	<body>
-		<div class="vh-100 w-100 flex justify-center">
-			<div class="flex flex-column items-center justify-center">
-				<h2 class="fw4 blue">Panorama Trail!</h2>
-				<p class="silver ma0">Running with Heroku Flow</p>
-				<div class="pt5">
-					<span id="env" class="white pv1 ph2 br-pill bg-light-blue"></span>
-				</div>
-			</div>
-		</div>
+    <head>
+    <META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=UTF-8">
+        <script src="https://www.google.com/recaptcha/api.js"></script>
+        <script>
+            function timestamp() { var response = document.getElementById("g-recaptcha-response"); if (response == null || response.value.trim() == "") {var elems = JSON.parse(document.getElementsByName("captcha_settings")[0].value);elems["ts"] = JSON.stringify(new Date().getTime());document.getElementsByName("captcha_settings")[0].value = JSON.stringify(elems); } } setInterval(timestamp, 500); 
+        </script>
+        <title>Create new Lead</title>
+        <h1 align="center">New Lead</h1>
+        <style type="text/css">
 
-		<script>
-			var env = "<%= env %>";
-			document.getElementById("env").innerHTML = env;
-		</script>
-	</body>
+        .form-style
+        {
+            max-width: 400px;
+            padding: 10px 20px;
+            background: #ffffff;
+            margin: 15px auto;
+            padding: 20px;
+            background: #e29e9e;
+            border-radius: 1px;
+            font-family: Georgia, "Times New Roman", Times, serif;
+        }
+
+        .form-style fieldset
+        {
+            border-color:#000000;
+            border-style: solid;
+        }
+
+        .form-style legend 
+        {
+            font-size: 1.5em;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .form-style label 
+        {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .form-style input[type="text"],
+        .form-style textarea,
+        .form-style select 
+        {
+            font-family: Georgia, "Times New Roman", Times, serif;
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            border-radius: 4px;
+            margin: 0;
+            outline: 0;            
+            font-size: 15px;
+            padding: 10px;
+            width: 100%;
+            box-sizing: border-box; 
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box; 
+            background-color: #ffffff;
+            color:#000000;
+            -webkit-box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
+            box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
+            margin-bottom: 30px;
+        }
+
+        .form-style input:focus::-webkit-input-placeholder
+        {
+            color:transparent;
+        }
+
+        .form-style input[type="text"]:focus,
+        .form-style textarea:focus,
+        .form-style select:focus
+        {
+            background: #ffffff;
+        }
+
+        .form-style select
+        {
+            -webkit-appearance: menulist-button;
+            height:40px;
+        }
+
+        .form-style .number 
+        {
+            background: #1abc9c;
+            color: #fff;
+            height: 30px;
+            width: 30px;
+            display: inline-block;
+            font-size: 0.8em;
+            margin-right: 4px;
+            line-height: 30px;
+            text-align: center;
+            text-shadow: 0 1px 0 rgba(255,255,255,0.2);
+            border-radius: 15px 15px 15px 0px;
+        }
+
+        .form-style input[type="submit"]
+        {
+            position: relative;
+            padding: 19px 39px 18px 39px;
+            color: #ffffff;
+            margin: 0 auto;
+            background: #8895dd;
+            font-size: 20px;
+            text-align: center;
+            font-style: normal;
+            width: 120px;
+            border: none;
+            border-width: 1px 1px 3px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .form-style input[type="submit"]:hover
+        {
+            background: #ffffff;
+            color: #8895dd;
+            box-shadow: inset 0 0 0 2px #8895dd;
+        }
+
+        .form-style input[type="submit"]:focus
+        {
+            background: rgb(20, 43, 175);
+        }
+        </style>
+    </head>
+
+    <body>
+        <div class="form-style">
+            <form action="https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8" method="POST">
+            <input type=hidden name='captcha_settings' value='{"keyname":"heroku","fallback":"true","orgId":"00D5i0000088aBq","ts":""}'>
+            <input type=hidden name="oid" value="00D5i0000088aBq">
+            <input type=hidden name="retURL" value="http://herokuapp.com">
+            <fieldset>
+                <legend>Information</legend>
+                <label for="company">*Company: </label>
+                <input  id="company" maxlength="50" name="company" type="text" autocomplete="off" required placeholder="Company" oninvalid="this.setCustomValidity('Введите название компании')" oninput="setCustomValidity('')" /><br>
+                <label for="first_name">*First Name:</label>
+                <input  id="first_name" maxlength="40" name="first_name" type="text" autocomplete="off" required placeholder="First Name" oninvalid="this.setCustomValidity('Введите Имя')" oninput="setCustomValidity('')"/><br>
+                <label for="last_name">*Last Name:</label>
+                <input  id="last_name" maxlength="80" name="last_name" type="text" autocomplete="off" required placeholder="Last Name" oninvalid="this.setCustomValidity('Введите Фамилию')" oninput="setCustomValidity('')"/><br> 
+            </fieldset>
+            <fieldset>
+                <legend>Contacts</legend>
+                <label for="email">*Email:</label>
+                <input  id="email" maxlength="80" name="email" type="text" autocomplete="off" required placeholder="test.test@gmail.ru" oninvalid="this.setCustomValidity('Введите email')" oninput="setCustomValidity('')" pattern="[a-z0-9._-]+@[a-z0-9]+/.[a-z]{2,3}+$" /><br> 
+                <label for="phone">*Phone:</label>
+                <input  id="phone" maxlength="40" name="phone" type="text" autocomplete="off" required placeholder="375 29 123 4567" oninvalid="this.setCustomValidity('Введите номер телефона')" oninput="setCustomValidity('')" pattern='\d{3}\s\d{2}\s\d{3}\s\d{4}' /><br>
+            </fieldset>
+            <label for="product">*Choose a product:</label>
+            <select id="00N5i00000HNBve" name="00N5i00000HNBve">
+                <optgroup label="Car">
+                    <option value="R001C1">Renault Logan</option>
+                    <option value="R002C2">Renault Logan Stepway</option>
+                    <option value="R003C3">Renault Sandero</option>
+                    <option value="R004C4">Renault Sandero Stepway</option>
+                    <option value="HK001C1">Kia Rio</option>
+                    <option value="HK002C2">Kia Rio X-Line</option>
+                    <option value="HK003C3">Hyundai Accent</option>
+                    <option value="HK004C4">Hyundai Solaris</option>
+                    <option value="VAG001C1">Volkswagen Polo Sedan</option>
+                    <option value="VAG002C2">Volkswagen Polo 2021</option>
+                    <option value="VAG003C3">Skoda Rapid</option>
+                    <option value="L001C1">Lada Vesta</option>
+                    <option value="L002C2">Lada Xray</option>
+                </optgroup>
+                <optgroup label="Accessory">
+                    <option value="R008A1">Carpets Renault</option>
+                    <option value="HK007A1">Carpets Hyundai</option>
+                    <option value="HK008A2">Carpets Kia</option>
+                    <option value="VAG009A1">Carpets Volkswagen</option>
+                    <option value="VAG010A2">Carpets Skoda</option>
+                    <option value="L005A1">Carpets Lada</option>
+                    <option value="MI001A1">Phone holder Xiaomi</option>
+                </optgroup>
+                <optgroup label="Part">
+                    <option value="R005E1">K7M</option>
+                    <option value="R006E2">K4M</option>
+                    <option value="R007E3">H4M</option>
+                    <option value="HK005E1">G4LC</option>
+                    <option value="HK006E2">G4FG</option>
+                    <option value="VAG004E1">CZCA</option>
+                    <option value="VAG005E2">CFW</option>
+                    <option value="VAG006E3">CWVA</option>
+                    <option value="VAG007E4">CFNA</option>
+                    <option value="VAG008E5">CFNB</option>
+                    <option value="L003E1">VAZ-21179</option>
+                    <option value="L004E2">VAZ-21129</option>
+                </optgroup>
+            </select>
+            <div class="g-recaptcha" data-sitekey="6LeyB54hAAAAANPkx20qQbTCQaSJGwQJLe9RdGSM"></div><br>
+            <input type="submit" name="submit">
+            </form>
+        </div>
+    </body>
 </html>
